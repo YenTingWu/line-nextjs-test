@@ -116,6 +116,7 @@ export default function Home() {
         {isLogin && (
           <div className="rounded-xl ring-2 shadow-xl flex flex-col items-center p-4">
             <ReactWebcam
+              controls={false}
               ref={webcamRef}
               mirrored={facingMode === "user"}
               className="pointer-events-none"
