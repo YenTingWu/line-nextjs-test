@@ -99,7 +99,7 @@ export default function Home() {
           <div className="rounded-xl ring-2 shadow-xl flex flex-col items-center p-4">
             <ReactWebcam
               ref={webcamRef}
-              mirrored
+              mirrored={facingMode === "user"}
               className="pointer-events-none"
               videoConstraints={{
                 facingMode,
