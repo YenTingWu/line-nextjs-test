@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, ChangeEvent } from "react";
 import ReactWebcam from "react-webcam";
 import liff from "@line/liff";
 import Image from "next/image";
@@ -12,6 +12,7 @@ export default function Home() {
   const [lineProfile, setLineProfile] = useState<Profile | null>(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [image, setImage] = useState<string | null>(null);
+  const [secondImage, setSecondImage] = useState<string | null>(null);
   const [facingMode, setFacingMode] = useState<"user" | "environment">("user");
   const webcamRef = useRef<ReactWebcam>(null);
 
@@ -33,6 +34,23 @@ export default function Home() {
 
   const flipCamera = () => {
     setFacingMode((prev) => (prev === "user" ? "environment" : "user"));
+  };
+
+  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target?.files == null) return;
+    const file = e.target.files[0]; // Get the selected file (the image)
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        // Set the image source to the base64 encoded image data
+        setSecondImage(reader.result as string);
+      };
+
+      // Read the file as a data URL (which base64 encodes the image)
+      reader.readAsDataURL(file);
+    }
   };
 
   useEffect(() => {
@@ -133,6 +151,25 @@ export default function Home() {
             )}
           </div>
         )}
+        <div>
+          <label
+            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+            htmlFor="imageCapture"
+          >
+            Capture My Image
+          </label>
+          <input
+            className="hidden"
+            id="imageCapture"
+            type="file"
+            capture="environment"
+            accept="image/*"
+            onChange={handleImageChange}
+          />
+          {secondImage && (
+            <Image src={secondImage} alt="image" width={400} height={400} />
+          )}
+        </div>
       </main>
     </div>
   );
