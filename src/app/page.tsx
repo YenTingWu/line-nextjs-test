@@ -12,6 +12,7 @@ export default function Home() {
   const [lineProfile, setLineProfile] = useState<Profile | null>(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [image, setImage] = useState<string | null>(null);
+  const [facingMode, setFacingMode] = useState<"user" | "environment">("user");
   const webcamRef = useRef<ReactWebcam>(null);
 
   const capture = () => {
@@ -28,6 +29,10 @@ export default function Home() {
     } catch {
       setErrorMessage("An error occurred while getting the profile.");
     }
+  };
+
+  const flipCamera = () => {
+    setFacingMode((prev) => (prev === "user" ? "environment" : "user"));
   };
 
   useEffect(() => {
@@ -96,6 +101,9 @@ export default function Home() {
               ref={webcamRef}
               mirrored
               className="pointer-events-none"
+              videoConstraints={{
+                facingMode,
+              }}
             />
             <div className="flex items-center gap-4">
               <button
@@ -103,6 +111,12 @@ export default function Home() {
                 onClick={capture}
               >
                 Capture
+              </button>
+              <button
+                className="rounded ring-1 shadow py-2 px-4 mt-3"
+                onClick={flipCamera}
+              >
+                flip
               </button>
               <button
                 className="rounded bg-sky-100 shadow py-2 px-4 mt-3"
