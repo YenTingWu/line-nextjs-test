@@ -8,10 +8,17 @@ type Profile = Awaited<ReturnType<typeof liff.getProfile>>;
 
 export default function Home() {
   const [lineProfile, setLineProfile] = useState<Profile | null>(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const getProfile = async () => {
-    const profile = await liff.getProfile();
-    setLineProfile(profile);
+    try {
+      const profile = await liff.getProfile();
+      setLineProfile(profile);
+    } catch (error) {
+      setErrorMessage(
+        error.message ?? "An error occurred while getting the profile."
+      );
+    }
   };
 
   useEffect(() => {
@@ -65,6 +72,7 @@ export default function Home() {
             ))}
           </ul>
         </div>
+        {errorMessage && <small className="text-red-400">{errorMessage}</small>}
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
         <a
