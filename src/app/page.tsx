@@ -40,7 +40,7 @@ export default function Home() {
         </button>
         <button
           onClick={async () => {
-            const profile = liff.getProfile();
+            const profile = await liff.getProfile();
             console.log("profile", profile);
           }}
         >
