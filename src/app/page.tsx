@@ -14,10 +14,8 @@ export default function Home() {
     try {
       const profile = await liff.getProfile();
       setLineProfile(profile);
-    } catch (error) {
-      setErrorMessage(
-        error.message ?? "An error occurred while getting the profile."
-      );
+    } catch {
+      setErrorMessage("An error occurred while getting the profile.");
     }
   };
 
