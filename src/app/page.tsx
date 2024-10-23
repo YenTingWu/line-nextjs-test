@@ -114,9 +114,10 @@ export default function Home() {
         </div>
         {errorMessage && <small className="text-red-400">{errorMessage}</small>}
         {isLogin && (
-          <div className="rounded-xl ring-2 shadow-xl flex flex-col items-center p-4">
+          <CameraContainer>
             <ReactWebcam
               controls={false}
+              // poster=""
               ref={webcamRef}
               mirrored={facingMode === "user"}
               className="pointer-events-none"
@@ -150,9 +151,9 @@ export default function Home() {
                 <Image src={image} alt="image" width={400} height={400} />
               </div>
             )}
-          </div>
+          </CameraContainer>
         )}
-        <div>
+        <CameraContainer>
           <label
             className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
             htmlFor="imageCapture"
@@ -170,8 +171,16 @@ export default function Home() {
           {secondImage && (
             <Image src={secondImage} alt="image" width={400} height={400} />
           )}
-        </div>
+        </CameraContainer>
       </main>
+    </div>
+  );
+}
+
+function CameraContainer({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="rounded-xl ring-2 shadow-xl flex flex-col items-center p-4">
+      {children}
     </div>
   );
 }
