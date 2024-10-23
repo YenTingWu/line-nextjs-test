@@ -115,63 +115,65 @@ export default function Home() {
         </div>
         {errorMessage && <small className="text-red-400">{errorMessage}</small>}
         {isLogin && (
-          <CameraContainer>
-            <ReactWebcam
-              controls={false}
-              ref={webcamRef}
-              mirrored={facingMode === "user"}
-              className="pointer-events-none"
-              videoConstraints={{
-                facingMode,
-              }}
-            />
-            <div className="flex items-center gap-4">
-              <button
-                className="rounded ring-1 shadow py-2 px-4 mt-3"
-                onClick={capture}
-              >
-                Capture
-              </button>
-              <button
-                className="rounded ring-1 shadow py-2 px-4 mt-3"
-                onClick={flipCamera}
-              >
-                flip
-              </button>
-              <button
-                className="rounded bg-sky-100 shadow py-2 px-4 mt-3"
-                onClick={() => setImage(null)}
-              >
-                Clear
-              </button>
-            </div>
-            {image && (
-              <div className="mt-10">
-                <h3>Your cool image</h3>
-                <Image src={image} alt="image" width={400} height={400} />
+          <>
+            <CameraContainer>
+              <ReactWebcam
+                controls={false}
+                ref={webcamRef}
+                mirrored={facingMode === "user"}
+                className="pointer-events-none"
+                videoConstraints={{
+                  facingMode,
+                }}
+              />
+              <div className="flex items-center gap-4">
+                <button
+                  className="rounded ring-1 shadow py-2 px-4 mt-3"
+                  onClick={capture}
+                >
+                  Capture
+                </button>
+                <button
+                  className="rounded ring-1 shadow py-2 px-4 mt-3"
+                  onClick={flipCamera}
+                >
+                  flip
+                </button>
+                <button
+                  className="rounded bg-sky-100 shadow py-2 px-4 mt-3"
+                  onClick={() => setImage(null)}
+                >
+                  Clear
+                </button>
               </div>
-            )}
-          </CameraContainer>
+              {image && (
+                <div className="mt-10">
+                  <h3>Your cool image</h3>
+                  <Image src={image} alt="image" width={400} height={400} />
+                </div>
+              )}
+            </CameraContainer>
+            <CameraContainer>
+              <label
+                className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+                htmlFor="imageCapture"
+              >
+                Capture My Image
+              </label>
+              <input
+                className="hidden"
+                id="imageCapture"
+                type="file"
+                capture="environment"
+                accept="image/*"
+                onChange={handleImageChange}
+              />
+              {secondImage && (
+                <Image src={secondImage} alt="image" width={400} height={400} />
+              )}
+            </CameraContainer>
+          </>
         )}
-        <CameraContainer>
-          <label
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            htmlFor="imageCapture"
-          >
-            Capture My Image
-          </label>
-          <input
-            className="hidden"
-            id="imageCapture"
-            type="file"
-            capture="environment"
-            accept="image/*"
-            onChange={handleImageChange}
-          />
-          {secondImage && (
-            <Image src={secondImage} alt="image" width={400} height={400} />
-          )}
-        </CameraContainer>
       </main>
     </div>
   );
@@ -179,7 +181,7 @@ export default function Home() {
 
 function CameraContainer({ children }: { children: React.ReactNode }) {
   return (
-    <div className="rounded-xl ring-2 shadow-xl flex flex-col items-center p-4">
+    <div className="rounded-xl ring-2 shadow-xl flex flex-col items-center p-4 w-full">
       {children}
     </div>
   );
