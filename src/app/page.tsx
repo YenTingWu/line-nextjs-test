@@ -1,6 +1,25 @@
+"use client";
+
+import { useEffect } from "react";
+import liff from "@line/liff";
 import Image from "next/image";
 
 export default function Home() {
+  useEffect(() => {
+    const startLiff = async () => {
+      try {
+        await liff.init({
+          liffId: process.env["NEXT_PUBLIC_LINE_LIFF_ID"] as string,
+        });
+        console.log("liff.init() success");
+      } catch (error) {
+        console.error("liff.init() failed", error);
+      }
+    };
+
+    startLiff();
+  });
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
@@ -12,6 +31,21 @@ export default function Home() {
           height={38}
           priority
         />
+        <button
+          onClick={async () => {
+            await liff.login();
+          }}
+        >
+          LOGIN
+        </button>
+        <button
+          onClick={async () => {
+            const profile = liff.getProfile();
+            console.log("profile", profile);
+          }}
+        >
+          SHOW PROFILE
+        </button>
         <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
           <li className="mb-2">
             Get started by editing{" "}
