@@ -84,6 +84,7 @@ export default function Home() {
           height={38}
           priority
         />
+        <small>v1.0.0</small>
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           {isLogin ? (
             <button
