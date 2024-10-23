@@ -48,7 +48,7 @@ export default function Home() {
 
   if (isInit === false) return null;
 
-  const isLogin = liff.isLoggedIn();
+  const isLogin = true;
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -92,7 +92,11 @@ export default function Home() {
         {errorMessage && <small className="text-red-400">{errorMessage}</small>}
         {isLogin && (
           <div className="rounded-xl ring-2 shadow-xl flex flex-col items-center p-4">
-            <ReactWebcam ref={webcamRef} mirrored />
+            <ReactWebcam
+              ref={webcamRef}
+              mirrored
+              className="pointer-events-none"
+            />
             <div className="flex items-center gap-4">
               <button
                 className="rounded ring-1 shadow py-2 px-4 mt-3"
