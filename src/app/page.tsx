@@ -61,7 +61,7 @@ export default function Home() {
             SHOW PROFILE
           </button>
         </div>
-        <div>
+        <div className="break-all">
           <ul>
             {Object.entries(lineProfile || {}).map(([key, value]) => (
               <li key={key}>
