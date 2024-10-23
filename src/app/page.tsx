@@ -118,7 +118,7 @@ export default function Home() {
           <CameraContainer>
             <ReactWebcam
               controls={false}
-              // poster=""
+              poster="https://nextjs.org/icons/next.svg"
               ref={webcamRef}
               mirrored={facingMode === "user"}
               className="pointer-events-none"
