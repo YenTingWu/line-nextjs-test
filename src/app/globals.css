@@ -26,11 +26,11 @@ body {
   }
 }
 
-/* video::-webkit-media-controls,
+video::-webkit-media-controls,
 video::-webkit-media-controls-enclosure,
 video::-webkit-media-controls-panel,
 video::-webkit-media-controls-play-button,
 video::-webkit-media-controls-start-playback-button {
   display: none !important;
   -webkit-appearance: none;
-} */
+}
