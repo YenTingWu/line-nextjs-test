@@ -13,7 +13,9 @@ export default function Home() {
   const [errorMessage, setErrorMessage] = useState("");
   const [image, setImage] = useState<string | null>(null);
   const [secondImage, setSecondImage] = useState<string | null>(null);
-  const [facingMode, setFacingMode] = useState<"user" | "environment">("user");
+  const [facingMode, setFacingMode] = useState<"user" | "environment">(
+    "environment"
+  );
   const webcamRef = useRef<ReactWebcam>(null);
 
   const capture = () => {
@@ -84,7 +86,7 @@ export default function Home() {
           height={38}
           priority
         />
-        <small>version: v1.0.5</small>
+        <small>version: v1.0.6</small>
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           {isLogin ? (
             <button
@@ -118,12 +120,12 @@ export default function Home() {
           <>
             <CameraContainer>
               <ReactWebcam
-                style={{
-                  WebkitTouchCallout: "none",
-                  WebkitUserSelect: "none",
-                  userSelect: "none",
-                  WebkitTapHighlightColor: "transparent",
-                }}
+                // style={{
+                //   WebkitTouchCallout: "none",
+                //   WebkitUserSelect: "none",
+                //   userSelect: "none",
+                //   WebkitTapHighlightColor: "transparent",
+                // }}
                 controls={false}
                 ref={webcamRef}
                 mirrored={facingMode === "user"}
@@ -181,14 +183,6 @@ export default function Home() {
           </>
         )}
       </main>
-      {/* <style jsx>{`
-        video::-webkit-media-controls,
-        video::-webkit-media-controls-enclosure,
-        video::-webkit-media-controls-panel,
-        video::-webkit-media-controls-play-button {
-          display: none !important;
-        }
-      `}</style> */}
     </div>
   );
 }
