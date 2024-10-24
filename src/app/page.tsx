@@ -84,7 +84,7 @@ export default function Home() {
           height={38}
           priority
         />
-        <small>version: v1.0.3</small>
+        <small>version: v1.0.4</small>
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           {isLogin ? (
             <button
@@ -118,7 +118,6 @@ export default function Home() {
           <>
             <CameraContainer>
               <ReactWebcam
-                disablePictureInPicture
                 style={{
                   WebkitTouchCallout: "none",
                   WebkitUserSelect: "none",
