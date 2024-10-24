@@ -84,7 +84,7 @@ export default function Home() {
           height={38}
           priority
         />
-        <small>version: v1.0.4</small>
+        <small>version: v1.0.5</small>
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           {isLogin ? (
             <button
@@ -181,14 +181,14 @@ export default function Home() {
           </>
         )}
       </main>
-      <style jsx>{`
+      {/* <style jsx>{`
         video::-webkit-media-controls,
         video::-webkit-media-controls-enclosure,
         video::-webkit-media-controls-panel,
         video::-webkit-media-controls-play-button {
           display: none !important;
         }
-      `}</style>
+      `}</style> */}
     </div>
   );
 }
