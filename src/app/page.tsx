@@ -118,6 +118,13 @@ export default function Home() {
           <>
             <CameraContainer>
               <ReactWebcam
+                disablePictureInPicture
+                style={{
+                  WebkitTouchCallout: "none",
+                  WebkitUserSelect: "none",
+                  userSelect: "none",
+                  WebkitTapHighlightColor: "transparent",
+                }}
                 controls={false}
                 ref={webcamRef}
                 mirrored={facingMode === "user"}
@@ -175,6 +182,14 @@ export default function Home() {
           </>
         )}
       </main>
+      <style jsx>{`
+        video::-webkit-media-controls,
+        video::-webkit-media-controls-enclosure,
+        video::-webkit-media-controls-panel,
+        video::-webkit-media-controls-play-button {
+          display: none !important;
+        }
+      `}</style>
     </div>
   );
 }
