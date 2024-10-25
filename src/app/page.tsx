@@ -86,7 +86,7 @@ export default function Home() {
           height={38}
           priority
         />
-        <small>version: v1.0.9</small>
+        <small>version: v1.0.10</small>
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           {isLogin ? (
             <button
@@ -133,8 +133,8 @@ export default function Home() {
                 className="pointer-events-none"
                 videoConstraints={{
                   facingMode,
-                  width: 856,
-                  height: 539.8,
+                  width: { ideal: 856 },
+                  height: { ideal: 539.8 },
                   aspectRatio: 856 / 539.8,
                 }}
               />
