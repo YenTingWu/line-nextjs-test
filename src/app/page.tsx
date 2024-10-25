@@ -73,7 +73,7 @@ export default function Home() {
 
   if (isInit === false) return null;
 
-  const isLogin = liff.isLoggedIn();
+  const isLogin = true;
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -86,7 +86,7 @@ export default function Home() {
           height={38}
           priority
         />
-        <small>version: v1.0.7</small>
+        <small>version: v1.0.8</small>
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           {isLogin ? (
             <button
@@ -120,6 +120,7 @@ export default function Home() {
           <>
             <CameraContainer>
               <ReactWebcam
+                width={"100%"}
                 // style={{
                 //   WebkitTouchCallout: "none",
                 //   WebkitUserSelect: "none",
@@ -132,6 +133,8 @@ export default function Home() {
                 className="pointer-events-none"
                 videoConstraints={{
                   facingMode,
+                  width: 856,
+                  height: 539.8,
                 }}
               />
               <div className="flex items-center gap-4">
