@@ -86,7 +86,7 @@ export default function Home() {
           height={38}
           priority
         />
-        <small>version: v1.0.8</small>
+        <small>version: v1.0.9</small>
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           {isLogin ? (
             <button
@@ -135,6 +135,7 @@ export default function Home() {
                   facingMode,
                   width: 856,
                   height: 539.8,
+                  aspectRatio: 856 / 539.8,
                 }}
               />
               <div className="flex items-center gap-4">
