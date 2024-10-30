@@ -121,12 +121,12 @@ export default function Home() {
             <CameraContainer>
               <ReactWebcam
                 width={"100%"}
-                // style={{
-                //   WebkitTouchCallout: "none",
-                //   WebkitUserSelect: "none",
-                //   userSelect: "none",
-                //   WebkitTapHighlightColor: "transparent",
-                // }}
+                style={{
+                  WebkitTouchCallout: "none",
+                  WebkitUserSelect: "none",
+                  userSelect: "none",
+                  WebkitTapHighlightColor: "transparent",
+                }}
                 controls={false}
                 ref={webcamRef}
                 mirrored={facingMode === "user"}
