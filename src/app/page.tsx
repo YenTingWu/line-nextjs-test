@@ -87,7 +87,7 @@ export default function Home() {
           height={38}
           priority
         />
-        <small>version: v1.0.10</small>
+        <small>version: v1.0.11</small>
         <Link href="/test">Go To Test Page</Link>
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           {isLogin ? (
