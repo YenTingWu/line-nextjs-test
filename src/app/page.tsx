@@ -4,6 +4,7 @@ import { useRef, useState, useEffect, ChangeEvent } from "react";
 import ReactWebcam from "react-webcam";
 import liff from "@line/liff";
 import Image from "next/image";
+import Link from "next/link";
 
 type Profile = Awaited<ReturnType<typeof liff.getProfile>>;
 
@@ -87,6 +88,7 @@ export default function Home() {
           priority
         />
         <small>version: v1.0.10</small>
+        <Link href="/test">Go To Test Page</Link>
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           {isLogin ? (
             <button
