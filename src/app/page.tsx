@@ -11,6 +11,7 @@ type Profile = Awaited<ReturnType<typeof liff.getProfile>>;
 export default function Home() {
   const [isInit, setIsInit] = useState<boolean>(false);
   const [lineProfile, setLineProfile] = useState<Profile | null>(null);
+  const [accessToken, setAccessToken] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [image, setImage] = useState<string | null>(null);
   const [secondImage, setSecondImage] = useState<string | null>(null);
@@ -29,7 +30,10 @@ export default function Home() {
   const getProfile = async () => {
     try {
       const profile = await liff.getProfile();
+      const accessToken = await liff.getAccessToken();
+
       setLineProfile(profile);
+      setAccessToken(accessToken);
     } catch {
       setErrorMessage("An error occurred while getting the profile.");
     }
@@ -116,6 +120,10 @@ export default function Home() {
               </li>
             ))}
           </ul>
+        </div>
+        <div>
+          <span className="font-bold">Access Token:</span>
+          <p className="break-all">{accessToken}</p>
         </div>
         {errorMessage && <small className="text-red-400">{errorMessage}</small>}
         {isLogin && (
