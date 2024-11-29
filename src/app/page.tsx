@@ -139,7 +139,8 @@ export default function Home() {
           <>
             <CameraContainer>
               <ReactWebcam
-                width={"100%"}
+                // width={"100%"}
+                height={"100%"}
                 style={{
                   WebkitTouchCallout: "none",
                   WebkitUserSelect: "none",
@@ -150,12 +151,6 @@ export default function Home() {
                 ref={webcamRef}
                 mirrored={facingMode === "user"}
                 className="pointer-events-none"
-                videoConstraints={{
-                  facingMode,
-                  width: { ideal: 856 },
-                  height: { ideal: 539.8 },
-                  aspectRatio: 856 / 539.8,
-                }}
               />
               <div className="flex items-center gap-4">
                 <button
