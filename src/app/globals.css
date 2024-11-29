@@ -26,6 +26,11 @@ body {
   }
 }
 
+video {
+  width: 100vw;
+  height: 100vh;
+}
+
 video::-webkit-media-controls,
 video::-webkit-media-controls-enclosure,
 video::-webkit-media-controls-panel,

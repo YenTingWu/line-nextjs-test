@@ -154,8 +154,8 @@ export default function Home() {
             <CameraContainer>
               {windowDimensions && (
                 <ReactWebcam
-                  width={windowDimensions?.width ?? 0}
-                  height={windowDimensions?.height ?? 0}
+                  width={windowDimensions.width}
+                  height={windowDimensions.height}
                   style={{
                     WebkitTouchCallout: "none",
                     WebkitUserSelect: "none",
@@ -163,8 +163,8 @@ export default function Home() {
                     WebkitTapHighlightColor: "transparent",
                   }}
                   videoConstraints={{
-                    width: windowDimensions?.width ?? 0,
-                    height: windowDimensions?.height ?? 0,
+                    width: windowDimensions.width,
+                    height: windowDimensions.height,
                     facingMode,
                   }}
                   controls={false}
