@@ -110,7 +110,7 @@ export default function Home() {
           height={38}
           priority
         />
-        <small>version: v1.0.21</small>
+        <small>version: v1.0.22</small>
         <Link href="/test">Go To Test Page</Link>
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           {isLogin ? (
@@ -153,6 +153,11 @@ export default function Home() {
 
         <ReactWebcam
           style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
             WebkitTouchCallout: "none",
             WebkitUserSelect: "none",
             userSelect: "none",
@@ -161,6 +166,7 @@ export default function Home() {
           screenshotQuality={1}
           videoConstraints={{
             height: { ideal: 719 },
+            width: { ideal: 400 },
             facingMode,
           }}
           controls={false}
