@@ -9,6 +9,11 @@ import Link from "next/link";
 type Profile = Awaited<ReturnType<typeof liff.getProfile>>;
 
 export default function Home() {
+  const [windowDimensions, setWindowDimensions] = useState<{
+    width: number;
+    height: number;
+  } | null>(null);
+
   const [isInit, setIsInit] = useState<boolean>(false);
   const [lineProfile, setLineProfile] = useState<Profile | null>(null);
 
@@ -81,6 +86,15 @@ export default function Home() {
     startLiff();
   });
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWindowDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+  }, []);
+
   if (isInit === false) return null;
 
   const isLogin = liff.isLoggedIn();
@@ -96,7 +110,7 @@ export default function Home() {
           height={38}
           priority
         />
-        <small>version: v1.0.11</small>
+        <small>version: v1.0.13</small>
         <Link href="/test">Go To Test Page</Link>
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           {isLogin ? (
@@ -138,20 +152,27 @@ export default function Home() {
         {isLogin && (
           <>
             <CameraContainer>
-              <ReactWebcam
-                // width={"100%"}
-                height={"100%"}
-                style={{
-                  WebkitTouchCallout: "none",
-                  WebkitUserSelect: "none",
-                  userSelect: "none",
-                  WebkitTapHighlightColor: "transparent",
-                }}
-                controls={false}
-                ref={webcamRef}
-                mirrored={facingMode === "user"}
-                className="pointer-events-none"
-              />
+              {windowDimensions && (
+                <ReactWebcam
+                  width={windowDimensions?.width ?? 0}
+                  height={windowDimensions?.height ?? 0}
+                  style={{
+                    WebkitTouchCallout: "none",
+                    WebkitUserSelect: "none",
+                    userSelect: "none",
+                    WebkitTapHighlightColor: "transparent",
+                  }}
+                  videoConstraints={{
+                    width: windowDimensions?.width ?? 0,
+                    height: windowDimensions?.height ?? 0,
+                    facingMode,
+                  }}
+                  controls={false}
+                  ref={webcamRef}
+                  mirrored={facingMode === "user"}
+                  className="pointer-events-none"
+                />
+              )}
               <div className="flex items-center gap-4">
                 <button
                   className="rounded ring-1 shadow py-2 px-4 mt-3"
@@ -199,6 +220,11 @@ export default function Home() {
               )}
             </CameraContainer>
           </>
+        )}
+        {windowDimensions && (
+          <div className="flex items-center">
+            {windowDimensions.width} x {windowDimensions.height}
+          </div>
         )}
       </main>
     </div>
