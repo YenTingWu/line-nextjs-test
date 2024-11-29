@@ -110,7 +110,7 @@ export default function Home() {
           height={38}
           priority
         />
-        <small>version: v1.0.22</small>
+        <small>version: v1.0.23</small>
         <Link href="/test">Go To Test Page</Link>
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           {isLogin ? (
@@ -166,7 +166,7 @@ export default function Home() {
           screenshotQuality={1}
           videoConstraints={{
             height: { ideal: 719 },
-            width: { ideal: 400 },
+            width: { ideal: 100 },
             facingMode,
           }}
           controls={false}
