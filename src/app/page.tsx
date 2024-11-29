@@ -110,7 +110,7 @@ export default function Home() {
           height={38}
           priority
         />
-        <small>version: v1.0.19</small>
+        <small>version: v1.0.20</small>
         <Link href="/test">Go To Test Page</Link>
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           {isLogin ? (
@@ -148,7 +148,31 @@ export default function Home() {
           <span className="font-bold">Id Token:</span>
           <p className="break-all">{idToken}</p>
         </div>
+
         {errorMessage && <small className="text-red-400">{errorMessage}</small>}
+
+        <ReactWebcam
+          style={{
+            WebkitTouchCallout: "none",
+            WebkitUserSelect: "none",
+            userSelect: "none",
+            WebkitTapHighlightColor: "transparent",
+          }}
+          screenshotQuality={1}
+          videoConstraints={{
+            height: {
+              ideal: 719,
+            },
+            width: {
+              ideal: 390,
+            },
+            facingMode,
+          }}
+          controls={false}
+          ref={webcamRef}
+          mirrored={facingMode === "user"}
+          className="pointer-events-none"
+        />
         {isLogin && (
           <>
             <CameraContainer>
