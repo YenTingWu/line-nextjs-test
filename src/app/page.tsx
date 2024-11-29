@@ -110,7 +110,7 @@ export default function Home() {
           height={38}
           priority
         />
-        <small>version: v1.0.13</small>
+        <small>version: v1.0.14</small>
         <Link href="/test">Go To Test Page</Link>
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           {isLogin ? (
@@ -162,9 +162,12 @@ export default function Home() {
                     userSelect: "none",
                     WebkitTapHighlightColor: "transparent",
                   }}
+                  screenshotQuality={1}
                   videoConstraints={{
                     width: windowDimensions.width,
-                    height: windowDimensions.height,
+                    height: {
+                      exact: 719,
+                    },
                     facingMode,
                   }}
                   controls={false}
