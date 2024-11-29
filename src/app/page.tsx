@@ -110,7 +110,7 @@ export default function Home() {
           height={38}
           priority
         />
-        <small>version: v1.0.25</small>
+        <small>version: v1.0.26</small>
         <Link href="/test">Go To Test Page</Link>
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           {isLogin ? (
@@ -167,6 +167,7 @@ export default function Home() {
           videoConstraints={{
             height: { ideal: 719 },
             width: { ideal: 390 },
+            aspectRatio: 719 / 390,
             facingMode,
           }}
           controls={false}
