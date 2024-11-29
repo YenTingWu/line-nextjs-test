@@ -110,7 +110,7 @@ export default function Home() {
           height={38}
           priority
         />
-        <small>version: v1.0.15</small>
+        <small>version: v1.0.16</small>
         <Link href="/test">Go To Test Page</Link>
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           {isLogin ? (
@@ -154,7 +154,7 @@ export default function Home() {
             <CameraContainer>
               {windowDimensions && (
                 <ReactWebcam
-                  width={windowDimensions.width}
+                  width={1000}
                   height={719}
                   style={{
                     WebkitTouchCallout: "none",
