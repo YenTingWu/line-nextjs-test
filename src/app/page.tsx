@@ -110,7 +110,7 @@ export default function Home() {
           height={38}
           priority
         />
-        <small>version: v1.0.27</small>
+        <small>version: v1.0.28</small>
         <Link href="/test">Go To Test Page</Link>
         <div className="flex gap-4 items-center flex-col sm:flex-row">
           {isLogin ? (
@@ -151,7 +151,7 @@ export default function Home() {
 
         {errorMessage && <small className="text-red-400">{errorMessage}</small>}
 
-        <ReactWebcam
+        {/* <ReactWebcam
           style={{
             position: "fixed",
             top: 0,
@@ -174,13 +174,18 @@ export default function Home() {
           ref={webcamRef}
           mirrored={facingMode === "user"}
           className="pointer-events-none"
-        />
+        /> */}
         {isLogin && (
           <>
             <CameraContainer>
               {windowDimensions && (
                 <ReactWebcam
                   style={{
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
                     WebkitTouchCallout: "none",
                     WebkitUserSelect: "none",
                     userSelect: "none",
